@@ -14,8 +14,14 @@ const CarrouselProducts = () => {
   }, []);
 
   return (
-    <div>
-      <CardProducts products={products[0]} />
+    <div className=" flex gap-4 flex-wrap">
+      {products &&
+        products.map((product, i) => (
+          <CardProducts
+            key={i}
+            products={product}
+          />
+        ))}
     </div>
   );
 };

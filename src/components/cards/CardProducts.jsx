@@ -3,7 +3,6 @@ import { AiFillStar } from "react-icons/ai";
 import MainBtn from "../buttons/MainBtn";
 
 const CardProducts = ({ products }) => {
-  console.log(products);
   const tags = products?.tags;
   const [numberTags, setnumberTags] = useState(0);
   const [stars, setStars] = useState([<AiFillStar />]);
@@ -46,8 +45,8 @@ const CardProducts = ({ products }) => {
         <div className=" absolute bottom-1 w-full p-2">
           <MainBtn
             textDisplay="See more"
-            bgc="bg-secondary"
-            colorText="text-white"
+            bgc="bg-white/80"
+            colorText="text-primary"
           />
         </div>
       </div>
@@ -58,8 +57,8 @@ const CardProducts = ({ products }) => {
             {products?.prices.max.amount}
           </div>
         )}
-        <div>
-          <div className=" text-[#FFC658]">{stars}</div>
+        <div className=" flex">
+          <div className=" flex text-[#FFC658]">{stars}</div>
           <div className=" text-slate-400">({numberTags})</div>
         </div>
         <div>{products?.prices.min.currencyCode}</div>
