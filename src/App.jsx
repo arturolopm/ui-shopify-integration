@@ -1,11 +1,13 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import HeaderSection from "./components/sections/HeaderSection";
+import PromoBanner from "./components/sections/PromoBanner";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div></div>;
+  return (
+    <>
+      <PromoBanner />
+      <HeaderSection />
+    </>
+  );
 }
 
 export default App;
