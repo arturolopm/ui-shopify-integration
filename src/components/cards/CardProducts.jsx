@@ -38,7 +38,7 @@ const CardProducts = ({ products }) => {
     <div>
       <div className=" relative w-fit">
         <img
-          className=" w-[320px] h-[320px] "
+          className=" w-[320px] min-w-[320px] h-[320px] "
           src={products?.featuredImage?.url}
           alt={products?.title}
         />
