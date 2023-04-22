@@ -13,26 +13,16 @@ const CarrouselProducts = () => {
     };
     fetchProducts();
   }, []);
-  const moveX = (id, move) => {
-    const el = document.getElementById(id);
-    const x = el.getBoundingClientRect().x;
-    el.style.transform = `translateX(${x + move}px)`;
-  };
 
   return (
     <>
-      <button
-        onClick={() => moveX("#carousel", 320)}
-        className=" btn-primary">
-        Holis
-      </button>
       <div className=" p-3 relative h-[400px]">
         <div
           id="#carousel"
           className="h-[400px] flex gap-6  duration-300">
           {products &&
             products.map((product, i) => {
-              if (i <= 6) {
+              if (i <= 10) {
                 return (
                   <CardProducts
                     key={i}
