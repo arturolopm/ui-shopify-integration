@@ -50,7 +50,7 @@ const CardProducts = ({ products }) => {
           />
         </div>
       </div>
-      <div className=" flex gap-6  flex-wrap">
+      <div className=" flex gap-3  flex-wrap">
         <div className=" w-full">{products?.title}</div>
         {products?.prices.max.amount > products?.prices.min.amount && (
           <div className=" line-through text-slate-400">

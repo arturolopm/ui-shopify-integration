@@ -1,6 +1,6 @@
 import { AiFillLeftCircle, AiFillRightCircle } from "react-icons/ai";
 import MainBtn from "../buttons/MainBtn";
-import moveX from "../../custom-hooks/MoveX";
+import useMoveX from "../../custom-hooks/useMoveX";
 
 const HeaderSection = () => {
   //   const leftArrow = <div className=" "></div>;
@@ -14,7 +14,7 @@ const HeaderSection = () => {
         Discover our <p>planet-friendly offer</p>
       </h1>
       <div className=" mb-4 flex">
-        <button onClick={() => moveX("#carousel", 320)}>
+        <button onClick={() => useMoveX("#carousel", 320)}>
           <MainBtn
             textDisplay={
               <AiFillLeftCircle className="bg-slate-800 text-xl  rounded-full mx-auto text-white" />
@@ -22,7 +22,7 @@ const HeaderSection = () => {
             bgc="bg-secondary"
           />
         </button>
-        <button onClick={() => moveX("#carousel", -320)}>
+        <button onClick={() => useMoveX("#carousel", -320)}>
           <MainBtn
             textDisplay={
               <AiFillRightCircle className="bg-slate-800 text-xl rounded-full mx-auto text-white" />

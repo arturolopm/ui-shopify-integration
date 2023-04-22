@@ -1,9 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import CardProducts from "../cards/CardProducts";
+import MainBtn from "../buttons/MainBtn";
 const CarrouselProducts = () => {
   const [products, setProducts] = useState([]);
-  const [carouselPosition, setcarouselPosition] = useState("letf-[24px]");
+  console.log(products);
+  const [showProducts, setshowProducts] = useState(false);
+
+  const showAll = () => {
+    setshowProducts((showProducts) => !showProducts);
+  };
   useEffect(() => {
     const fetchProducts = async () => {
       const fetchedProducts = await axios.get(
@@ -16,10 +22,10 @@ const CarrouselProducts = () => {
 
   return (
     <>
-      <div className=" p-3 relative h-[400px]">
+      <div className=" overflow-hidden p-3 relative h-[400px]">
         <div
           id="#carousel"
-          className="h-[400px] flex gap-6  duration-300">
+          className="h-[400px]  flex gap-6 -translate-x-[500px] duration-300">
           {products &&
             products.map((product, i) => {
               if (i <= 10) {
@@ -33,16 +39,26 @@ const CarrouselProducts = () => {
             })}
         </div>
       </div>
-
-      <div className=" mt-14 flex gap-4 p-3 flex-wrap ">
-        {products &&
-          products.map((product, i) => (
-            <CardProducts
-              key={i}
-              products={product}
-            />
-          ))}
+      <div
+        onClick={() => showAll()}
+        className=" my-6 mx-auto  w-fit">
+        <MainBtn
+          bgc="bg-primary"
+          textDisplay="BROWSE ALL PRODUCTS"
+          colorText="text-white"
+        />
       </div>
+      {showProducts && (
+        <div className=" gap-5  mt-14 grid grid-cols-4 p-3  ">
+          {products &&
+            products.map((product, i) => (
+              <CardProducts
+                key={i}
+                products={product}
+              />
+            ))}
+        </div>
+      )}
     </>
   );
 };
