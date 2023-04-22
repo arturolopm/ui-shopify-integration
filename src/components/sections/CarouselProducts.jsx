@@ -49,7 +49,7 @@ const CarrouselProducts = () => {
         />
       </div>
       {showProducts && (
-        <div className=" gap-5  mt-14 grid grid-cols-4 p-3  ">
+        <div className=" gap-5 content-between place-items-center mt-14 grid grid-cols-4 p-3  ">
           {products &&
             products.map((product, i) => (
               <CardProducts
