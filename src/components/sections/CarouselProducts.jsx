@@ -4,7 +4,6 @@ import CardProducts from "../cards/CardProducts";
 import MainBtn from "../buttons/MainBtn";
 const CarrouselProducts = () => {
   const [products, setProducts] = useState([]);
-  console.log(products);
   const [showProducts, setshowProducts] = useState(false);
 
   const showAll = () => {
@@ -49,7 +48,7 @@ const CarrouselProducts = () => {
         />
       </div>
       {showProducts && (
-        <div className=" gap-5 content-between place-items-center mt-14 grid grid-cols-4 p-3  ">
+        <div className=" gap-5 content-between place-items-center mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-3  ">
           {products &&
             products.map((product, i) => (
               <CardProducts
