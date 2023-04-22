@@ -32,20 +32,23 @@ const SubscribeEmail = () => {
 
   return (
     <form
-      className="flex gap-2 justify-center"
+      className="flex flex-col md:flex-row items-center gap-2 justify-center"
       onSubmit={subscribe}>
       <input
-        className="rounded-full  focus:outline-1 outline-primary"
+        className="rounded-full min-w-[335px] border-2 border-solid border-primary md:border-none outline-1 focus:outline-1 outline-primary"
         type="email"
         name="email"
-        placeholder="Email"
+        placeholder=" Your Email"
         value={email}
         onChange={handleEmailChange}
       />
       <button
         className="w-fit"
         type="submit">
-        <MainBtn textDisplay="Send" />
+        <MainBtn
+          textDisplay="Send"
+          colorText="text-white"
+        />
       </button>
     </form>
   );

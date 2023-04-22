@@ -21,10 +21,10 @@ const CarrouselProducts = () => {
 
   return (
     <>
-      <div className=" overflow-hidden p-3 relative h-[400px]">
+      <div className=" overflow-hidden p-3 relative h-fit">
         <div
           id="#carousel"
-          className="h-[400px]  flex gap-6 -translate-x-[500px] duration-300">
+          className="h-fit  flex gap-6 -translate-x-[500px] duration-300">
           {products &&
             products.map((product, i) => {
               if (i <= 10) {
@@ -43,7 +43,7 @@ const CarrouselProducts = () => {
         className=" my-6 mx-auto  w-fit">
         <MainBtn
           bgc="bg-primary"
-          textDisplay="BROWSE ALL PRODUCTS"
+          textDisplay={showProducts ? "HIDE PRODUCTS" : "SHOW ALL PRODUCTS"}
           colorText="text-white"
         />
       </div>
