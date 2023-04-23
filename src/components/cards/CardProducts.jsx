@@ -2,27 +2,40 @@ import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import MainBtn from "../buttons/MainBtn";
 
+// This component renders a card with product information
+
 const CardProducts = ({ products }) => {
+  // The tags and number of tags state are set here
   const tags = products?.tags;
   const [numberTags, setnumberTags] = useState(0);
-  const [stars, setStars] = useState([<AiFillStar />]);
-  useEffect(() => {
-    const getTags = () => {
-      if (!tags) {
-        return;
-      }
-      const arrTags = [];
-      for (let i = 0; i < tags.length; i++) {
-        if (!isNaN(tags[i])) {
-          arrTags.push(parseInt(tags[i]));
-        }
-      }
 
-      const sum = arrTags.reduce((a, b) => a + b, 0);
-      setnumberTags(sum / arrTags.length);
+  // The stars state is set here
+  const [stars, setStars] = useState([<AiFillStar />]);
+
+  // The tags are summed and averaged to get the number of tags for each product
+  useEffect(() => {
+    const getTags = async () => {
+      try {
+        if (!tags) {
+          return;
+        }
+        const arrTags = [];
+        for (let i = 0; i < tags.length; i++) {
+          if (!isNaN(tags[i])) {
+            arrTags.push(parseInt(tags[i]));
+          }
+        }
+
+        const sum = arrTags.reduce((a, b) => a + b, 0);
+        setnumberTags(sum / arrTags.length);
+      } catch (error) {
+        console.log(error);
+      }
     };
     getTags();
   }, [tags]);
+
+  // The number of tags is used to calculate how many stars the product should have
   useEffect(() => {
     const amount = Math.ceil(numberTags / 100);
     const provitionalStars = [];
@@ -34,37 +47,38 @@ const CardProducts = ({ products }) => {
     setStars(provitionalStars);
   }, [numberTags]);
 
+  // The HTML5 semantics are used to give meaning to the structure of the code
   return (
-    <div>
-      <div className=" relative w-fit">
+    <article>
+      <figure>
         <img
           className=" md:w-[320px] min-w-[180px] md:min-w-[320px] md:h-[320px] "
           src={products?.featuredImage?.url}
           alt={products?.title}
         />
-        <div className=" absolute bottom-1 w-full p-2">
+        <figcaption>
           <MainBtn
             textDisplay="See more"
             bgc="bg-white/80"
             colorText="text-primary"
           />
-        </div>
-      </div>
-      <div className=" flex gap-3  flex-wrap">
-        <div className=" w-full">{products?.title}</div>
+        </figcaption>
+      </figure>
+      <section>
+        <h2>{products?.title}</h2>
         {products?.prices.max.amount > products?.prices.min.amount && (
-          <div className=" line-through text-slate-400">
+          <p className="line-through text-slate-400">
             {products?.prices.max.amount}
-          </div>
+          </p>
         )}
-        <div className=" flex">
-          <div className=" flex text-[#FFC658]">{stars}</div>
-          <div className=" text-slate-400">({numberTags})</div>
+        <div className="flex">
+          <div className="flex text-[#FFC658]">{stars}</div>
+          <div className="text-slate-400">({numberTags})</div>
         </div>
-        <div>{products?.prices.min.currencyCode}</div>
-        <div>{products?.prices.min.amount}</div>
-      </div>
-    </div>
+        <p>{products?.prices.min.currencyCode}</p>
+        <p>{products?.prices.min.amount}</p>
+      </section>
+    </article>
   );
 };
 
