@@ -11,10 +11,14 @@ const CarrouselProducts = () => {
   };
   useEffect(() => {
     const fetchProducts = async () => {
-      const fetchedProducts = await axios.get(
-        "https://gradistore-spi.herokuapp.com/products/all"
-      );
-      setProducts(fetchedProducts.data.products.nodes);
+      try {
+        const fetchedProducts = await axios.get(
+          "https://gradistore-spi.herokuapp.com/products/all"
+        );
+        setProducts(fetchedProducts.data.products.nodes);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     };
     fetchProducts();
   }, []);
