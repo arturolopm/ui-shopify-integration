@@ -31,13 +31,17 @@ const CarrouselProducts = () => {
           className="h-fit  flex gap-6 -translate-x-[500px] duration-300">
           {products &&
             products.map((product, i) => {
-              if (i <= 10) {
-                return (
-                  <CardProducts
-                    key={i}
-                    products={product}
-                  />
-                );
+              {
+                /* if (i <= 10) { */
+              }
+              return (
+                <CardProducts
+                  key={i}
+                  products={product}
+                />
+              );
+              {
+                /* } */
               }
             })}
         </div>
